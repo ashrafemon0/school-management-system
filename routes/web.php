@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\setupManagement\StudentSubjectController;
 use App\Http\Controllers\backend\setupManagement\StudentYearController;
 use App\Http\Controllers\backend\setupManagement\SubjectAssignController;
 use App\Http\Controllers\backend\StudentManagment\StudentRegController;
+use App\Http\Controllers\backend\StudentManagment\StudentRollGenerateController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -138,13 +139,16 @@ Route::prefix('student')->group(function (){
     Route::post('/reg/store',[StudentRegController::class,'StoreRegistration'])->name('store.student.reg');
     Route::get('/reg/search',[StudentRegController::class,'SearchStudent'])->name('student.class.year.wise');
 
-
-
     Route::get('/reg/edit/{student_id}',[StudentRegController::class,'StudentRegEdit'])->name('student.reg.edit');
     Route::post('/reg/update/{student_id}}',[StudentRegController::class,'StudentRegUpdate'])->name('update.student.reg');
     Route::get('/reg/promotion/{student_id}}',[StudentRegController::class,'StudentRegPromotion'])->name('student.reg.promotion');
     Route::post('/promotion/update/{student_id}}',[StudentRegController::class,'UpdateRegPromotion'])->name('update.student.promotion');
     Route::get('/promotion/details/{student_id}}',[StudentRegController::class,'StudentPromotionDetails'])->name('student.registration.details');
+
+    Route::get('/roll/view',[StudentRollGenerateController::class,'StudentRollView'])->name('student.roll.generate');
+    Route::get('/roll/getGenerate',[StudentRollGenerateController::class,'StudentRollGenerate'])->name('student.roll.get');
+    Route::post('/roll/store',[StudentRollGenerateController::class,'StudentRollStore'])->name('student.roll.store');
+
 });
 
 
