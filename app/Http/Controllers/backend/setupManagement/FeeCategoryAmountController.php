@@ -14,6 +14,7 @@ class FeeCategoryAmountController extends Controller
 
 //        $data['FeeCategoryAmount'] = StudentFeeCategoryAmount::all();
         $data['FeeCategoryAmount'] = StudentFeeCategoryAmount::select('fee_category_id')->groupBy('fee_category_id')->get();
+//        dd($data['FeeCategoryAmount']->toArray()); 111=1,222=2,333=3
         return view('admin.backend.setup.FeeCategoryAmount',$data);
 
     }

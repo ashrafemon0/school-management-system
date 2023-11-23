@@ -90,6 +90,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{route('student.reg')}}"><i class="ti-more"></i>Student Registration</a></li>
                     <li><a href="{{route('student.roll.generate')}}"><i class="ti-more"></i>Student Roll Generate</a></li>
+                    <li><a href="{{route('student.registration.fee')}}"><i class="ti-more"></i>Registration Fee</a></li>
                 </ul>
             </li>
 
