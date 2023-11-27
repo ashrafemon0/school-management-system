@@ -19,7 +19,6 @@ class StudentFeeCategoryAmount extends Model
     }
 
 
-
     public function FeeClass(){
         return $this->belongsTo(StudentClass::class,'class_id','id');
     }

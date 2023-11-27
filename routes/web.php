@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\EmployeeManage\EmployeeRegController;
 use App\Http\Controllers\backend\setupManagement\DesignationController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryAmountController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryController;
@@ -11,9 +12,11 @@ use App\Http\Controllers\backend\setupManagement\StudentShiftController;
 use App\Http\Controllers\backend\setupManagement\StudentSubjectController;
 use App\Http\Controllers\backend\setupManagement\StudentYearController;
 use App\Http\Controllers\backend\setupManagement\SubjectAssignController;
+use App\Http\Controllers\backend\StudentManagment\StudentExampFeeController;
 use App\Http\Controllers\backend\StudentManagment\StudentRegController;
 use App\Http\Controllers\backend\StudentManagment\StudentRegFeeController;
 use App\Http\Controllers\backend\StudentManagment\StudentRollGenerateController;
+use App\Http\Controllers\backend\StudentManagment\StudentTuitionFeeController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +46,8 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
+
+Route::group(['middleware'=>'auth'],function (){
 
 Route::prefix('user')->group(function (){
     Route::get('/view',[UserController::class,'UserView'])->name('user.view');
@@ -160,9 +165,27 @@ Route::prefix('student')->group(function (){
     Route::get('/reg/fee/view',[StudentRegFeeController::class,'StudentRegFeeView'])->name('student.registration.fee');
     Route::get('/reg/fee/classwiseget',[StudentRegFeeController::class,'RegFeeClassWiseGet'])->name('student.registration.fee.classwise.get');
     Route::get('/reg/fee/payslip',[StudentRegFeeController::class,'RegFeePaySlip'])->name('student.registration.fee.payslip');
+
+    //Student Tuition Fee Route
+    Route::get('/tuition/fee/view',[StudentTuitionFeeController::class,'StudentTuitionFeeView'])->name('student.tuition.fee');
+    Route::get('/tuition/fee/classwiseget',[StudentTuitionFeeController::class,'TuitionFeeClassWiseGet'])->name('student.tuition.fee.classwise.get');
+    Route::get('/tuition/fee/payslip',[StudentTuitionFeeController::class,'TuitionFeePaySlip'])->name('student.tuition.fee.payslip');
+
+    //Student Exam Fee Route
+    Route::get('/tuition/exam/view',[StudentExampFeeController::class,'StudentExamFeeView'])->name('student.exam.fee');
+    Route::get('/tuition/exam/classwiseget',[StudentExampFeeController::class,'ExamFeeClassWiseGet'])->name('student.exam.fee.classwise.get');
+    Route::get('/tuition/exam/payslip',[StudentExampFeeController::class,'ExamFeePaySlip'])->name('student.exam.fee.payslip');
+
 });
 
+    Route::prefix('employee')->group(function (){
+        Route::get('/reg/view',[EmployeeRegController::class,'EmployeeRegView'])->name('employee.reg');
+        Route::get('/add',[EmployeeRegController::class,'EmployeeAdd'])->name('add.employee');
+        Route::post('/store',[EmployeeRegController::class,'EmployeeStore'])->name('store.employee.reg');
+    });
 
+
+});
 
 
 

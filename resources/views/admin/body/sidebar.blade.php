@@ -91,6 +91,21 @@
                     <li><a href="{{route('student.reg')}}"><i class="ti-more"></i>Student Registration</a></li>
                     <li><a href="{{route('student.roll.generate')}}"><i class="ti-more"></i>Student Roll Generate</a></li>
                     <li><a href="{{route('student.registration.fee')}}"><i class="ti-more"></i>Registration Fee</a></li>
+                    <li><a href="{{route('student.tuition.fee')}}"><i class="ti-more"></i>Tuition Fee</a></li>
+                    <li><a href="{{route('student.exam.fee')}}"><i class="ti-more"></i>Exam Fee</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview {{($prefix == '/employee')?'active':''}}">
+                <a href="#">
+                    <i data-feather="message-circle"></i>
+                    <span>Employee Management</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('employee.reg')}}"><i class="ti-more"></i>Employee Registration</a></li>
                 </ul>
             </li>
 
