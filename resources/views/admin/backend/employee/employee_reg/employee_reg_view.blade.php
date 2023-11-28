@@ -47,7 +47,7 @@
                                                             <td >{{$employee->code}}</td>
                                                             @endif
                                                             <td>
-                                                                <a class="btn btn-info" href="{{route("designation.edit",$employee->id)}}">Edit</a>
+                                                                <a class="btn btn-info" href="{{route("employee.edit",$employee->id)}}">Edit</a>
                                                                 <a id="delete" class="btn btn-danger" href="{{route("designation.delete",$employee->id)}}">Delete</a>
                                                             </td>
 

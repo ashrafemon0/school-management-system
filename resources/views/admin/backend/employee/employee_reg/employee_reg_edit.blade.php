@@ -19,14 +19,14 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action="{{route("store.employee.reg")}}" enctype="multipart/form-data">
+                                <form method="post" action="{{route("update.employee.reg",$employeeEdit->id)}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <h5>Teacher Name<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="name" class="form-control"  data-validation-required-message="This field is required" required=""> <div class="help-block"></div></div>
+                                                    <input type="text" name="name" class="form-control"  data-validation-required-message="This field is required" required="" value="{{$employeeEdit->name}}"> <div class="help-block"></div></div>
                                             </div>
                                         </div>
 
@@ -34,7 +34,7 @@
                                             <div class="form-group">
                                                 <h5>Father Name<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="fname" class="form-control"  data-validation-required-message="This field is required" required=""> <div class="help-block"></div></div>
+                                                    <input type="text" name="fname" class="form-control"  data-validation-required-message="This field is required" required="" value="{{$employeeEdit->fname}}"> <div class="help-block"></div></div>
                                             </div>
                                         </div>
 
@@ -42,7 +42,7 @@
                                             <div class="form-group">
                                                 <h5>Mother Name<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="mname" class="form-control"  data-validation-required-message="This field is required" required=""> <div class="help-block"></div></div>
+                                                    <input type="text" name="mname" class="form-control"  data-validation-required-message="This field is required" required="" value="{{$employeeEdit->mname}}"> <div class="help-block"></div></div>
                                             </div>
                                         </div>
 
@@ -52,7 +52,7 @@
                                             <div class="form-group">
                                                 <h5>Mobile<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="mobile" class="form-control"  data-validation-required-message="This field is required" required=""> <div class="help-block"></div></div>
+                                                    <input type="text" name="mobile" class="form-control"  data-validation-required-message="This field is required" required="" value="{{$employeeEdit->mobile}}"> <div class="help-block"></div></div>
                                             </div>
                                         </div>
 
@@ -60,7 +60,7 @@
                                             <div class="form-group">
                                                 <h5>Address<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="address" class="form-control"  data-validation-required-message="This field is required" required=""> <div class="help-block"></div></div>
+                                                    <input type="text" name="address" class="form-control"  data-validation-required-message="This field is required" required="" value="{{$employeeEdit->address}}"> <div class="help-block"></div></div>
                                             </div>
                                         </div>
 
@@ -70,8 +70,8 @@
                                                 <div class="controls">
                                                     <select name="gender" id="gender" required="" class="form-control">
                                                         <option value="">Select User Role</option>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
+                                                        <option value="male" {{($employeeEdit->gender == 'male'?'selected':'')}}>Male</option>
+                                                        <option value="female" {{($employeeEdit->gender == 'female'?'selected':'')}}>Female</option>
 
                                                     </select>
                                                 </div>
@@ -86,9 +86,9 @@
                                                 <div class="controls">
                                                     <select name="religion" id="religion" required="" class="form-control">
                                                         <option value="">Select User Religion</option>
-                                                        <option value="male">Islam</option>
-                                                        <option value="female">Hindu</option>
-                                                        <option value="female">Urdhu</option>
+                                                        <option value="islam" {{($employeeEdit->religion == 'islam'?'selected':'')}}>Islam</option>
+                                                        <option value="hindu" {{($employeeEdit->religion == 'hindu'?'selected':'')}}>Hindu</option>
+                                                        <option value="urdhu" {{($employeeEdit->religion == 'urdhu'?'selected':'')}}>Urdhu</option>
 
                                                     </select>
                                                 </div>
@@ -99,7 +99,7 @@
                                             <div class="form-group">
                                                 <h5>Birth Date<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="date" name="dob" class="form-control"  required=""> <div class="help-block"></div>
+                                                    <input type="date" name="dob" class="form-control"  required="" value="{{$employeeEdit->dob}}"> <div class="help-block"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@
                                                     <select name="designation" id="designation" required="" class="form-control">
                                                         <option value="">Select Teacher designation</option>
                                                         @foreach($designation as $designations)
-                                                            <option value="{{$designations->id}}">{{$designations->name}}</option>
+                                                            <option value="{{$designations->id}}" {{($employeeEdit->designation_id == $designations->id)?'selected':''}}>{{$designations->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -119,25 +119,26 @@
                                         </div>
                                     </div>
                                     <div class="row">
+
+                                        @if(!$employeeEdit)
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <h5>Salary<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="salary" class="form-control"  data-validation-required-message="This field is required" required=""> <div class="help-block"></div></div>
+                                                    <input type="text" name="salary" class="form-control"  data-validation-required-message="This field is required" required="" value="{{$employeeEdit->salary}}"> <div class="help-block"></div></div>
                                             </div>
                                         </div>
-
-
-                                        <div class="col-md-3">
+                                        @endif
+                                            @if(!$employeeEdit)
+                                            <div class="col-md-3">
                                             <div class="form-group">
                                                 <h5>Joining Date<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="date" name="join_date" class="form-control"  required=""> <div class="help-block"></div>
+                                                    <input type="date" name="join_date" class="form-control"  required="" value="{{$employeeEdit->join_date}}"> <div class="help-block"></div>
                                                 </div>
                                             </div>
-                                        </div>
-
-
+                                            </div>
+                                            @endif
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <h5>Profile Image<span class="text-danger">*</span></h5>
@@ -154,14 +155,14 @@
                                                 <h5>Image<span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <div class="mb-3">
-                                                        <img id="showImg" src="{{ url('upload/no_image.jpg') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="100" height="100">
+                                                        <img id="showImg" src="{{ (!empty($employeeEdit->image) ? url('upload/user_image/'.$employeeEdit->image): url('upload/no_image.jpg')) }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="100" height="100">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-info" value="Add">
+                                        <input type="submit" class="btn btn-info" value="update">
                                     </div>
                                 </form>
 

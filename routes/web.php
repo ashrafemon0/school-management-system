@@ -182,6 +182,8 @@ Route::prefix('student')->group(function (){
         Route::get('/reg/view',[EmployeeRegController::class,'EmployeeRegView'])->name('employee.reg');
         Route::get('/add',[EmployeeRegController::class,'EmployeeAdd'])->name('add.employee');
         Route::post('/store',[EmployeeRegController::class,'EmployeeStore'])->name('store.employee.reg');
+        Route::get('/edit/{id}',[EmployeeRegController::class,'EmployeeEdit'])->name('employee.edit');
+        Route::post('/update/{id}',[EmployeeRegController::class,'EmployeeUpdate'])->name('update.employee.reg');
     });
 
 
