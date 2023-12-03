@@ -11,6 +11,7 @@ use App\Models\StudentYear;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class EmployeeRegController extends Controller
 {
@@ -66,6 +67,7 @@ class EmployeeRegController extends Controller
             $user->mobile = $request->mobile;
             $user->address = $request->address;
             $user->gender = $request->gender;
+            $user->designation_id = $request->designation_id;
             $user->religion = $request->religion;
             $user->salary = $request->salary;
             $user->join_date = date('Y-m-d',strtotime($request->join_date));
@@ -102,6 +104,7 @@ class EmployeeRegController extends Controller
         $data['employeeEdit'] = User::find($id);
 //        dd($data['employeeEdit']->toArray());
         $data['designation'] = Designation::all();
+//        dd($data['designation']->toArray());
         return view('admin.backend.employee.employee_reg.employee_reg_edit',$data);
     }
 
@@ -136,5 +139,13 @@ class EmployeeRegController extends Controller
 
         return redirect()->route('employee.reg')->with($notification);
 
+    }
+
+    public function EmployeeDetails($id){
+        $data['details'] = User::find($id);
+//        dd( $data['details']->toArray());
+
+        $pdf = PDF::loadView('admin.backend.employee.employee_reg.EmployeeRegPdf', $data);
+        return $pdf->stream('document.pdf');
     }
 }

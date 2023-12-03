@@ -108,8 +108,8 @@
                                             <div class="form-group">
                                                 <h5>Designation<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select name="designation" id="designation" required="" class="form-control">
-                                                        <option value="">Select Teacher designation</option>
+                                                    <select name="designation_id" id="designation" required="" class="form-control">
+                                                        <option value="" selected="" disabled="">Select Teacher designation</option>
                                                         @foreach($designation as $designations)
                                                             <option value="{{$designations->id}}">{{$designations->name}}</option>
                                                         @endforeach

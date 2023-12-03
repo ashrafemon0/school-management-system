@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function employee_details(){
+
+        return $this->belongsTo(Designation::class,'designation_id','id');
+    }
 }

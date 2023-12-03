@@ -108,7 +108,7 @@
                                             <div class="form-group">
                                                 <h5>Designation<span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select name="designation" id="designation" required="" class="form-control">
+                                                    <select name="designation_id" id="designation_id" required="" class="form-control">
                                                         <option value="">Select Teacher designation</option>
                                                         @foreach($designation as $designations)
                                                             <option value="{{$designations->id}}" {{($employeeEdit->designation_id == $designations->id)?'selected':''}}>{{$designations->name}}</option>

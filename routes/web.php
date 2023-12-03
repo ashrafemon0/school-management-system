@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeRegController;
+use App\Http\Controllers\backend\EmployeeManage\EmployeeSalaryController;
 use App\Http\Controllers\backend\setupManagement\DesignationController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryAmountController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryController;
@@ -184,6 +185,12 @@ Route::prefix('student')->group(function (){
         Route::post('/store',[EmployeeRegController::class,'EmployeeStore'])->name('store.employee.reg');
         Route::get('/edit/{id}',[EmployeeRegController::class,'EmployeeEdit'])->name('employee.edit');
         Route::post('/update/{id}',[EmployeeRegController::class,'EmployeeUpdate'])->name('update.employee.reg');
+        Route::get('/details/{id}',[EmployeeRegController::class,'EmployeeDetails'])->name('employee.details');
+
+
+        Route::get('/salary',[EmployeeSalaryController::class,'EmployeeSalaryView'])->name('employee.salary');
+        Route::get('/salary/increment/{id}',[EmployeeSalaryController::class,'EmployeeSalaryIncrement'])->name('employee.salary.increment');
+        Route::post('/salary/store/{id}',[EmployeeSalaryController::class,'EmployeeSalaryStore'])->name('store.salary.employee');
     });
 
 
