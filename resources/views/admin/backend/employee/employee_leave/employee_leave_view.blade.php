@@ -12,8 +12,8 @@
                     <div class="col-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Employee Salary List</h3>
-                                <a style="float: right" class="btn btn-success" href="{{route("add.employee")}}">ADD Salary</a>
+                                <h3 class="box-title">Employee Leave</h3>
+                                <a style="float: right" class="btn btn-success" href="{{route("add.designation")}}">ADD Leave</a>
                             </div>
 
                             <!-- /.box-header -->
@@ -22,27 +22,19 @@
                                     <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                                     <thead>
                                                     <tr role="row">
-                                                        <th width="5%">SL</th>
-                                                        <th width="10%">ID No</th>
-                                                        <th width="15%">Mobile</th>
-                                                        <th width="10%">Gender</th>
-                                                        <th width="15%">Joining Date</th>
-                                                        <th width="10%">Salary</th>
-                                                        <th width="20%">Action</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 20.562px;">SL</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 240.562px;">Designation</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 119.469px;">Action</th>
                                                     </thead>
-                                                    @foreach($allData as $key => $value)
+                                                    @foreach($studentDesignation as $key => $designation)
                                                         <tbody>
 
                                                         <tr role="row" class="even">
                                                             <td>{{$key +1}}</td>
-                                                            <td >{{$value->id_no}}</td>
-                                                            <td >{{$value->mobile}}</td>
-                                                            <td >{{$value->gender}}</td>
-                                                            <td >{{$value->join_date}}</td>
-                                                            <td >{{$value->salary}}</td>
+                                                            <td class="sorting_1">{{$designation->name}}</td>
                                                             <td>
-                                                                <a title="Increment" class="btn btn-info" href="{{route("employee.salary.increment",$value->id)}}"><i class="fa fa-plus-circle"></i></a>
-                                                                <a title="Details" class="btn btn-danger" href="{{route("employee.salary.details",$value->id)}}"><i class="fa fa-eye"></i></a>
+                                                                <a class="btn btn-info" href="{{route("designation.edit",$designation->id)}}">Edit</a>
+                                                                <a id="delete" class="btn btn-danger" href="{{route("designation.delete",$designation->id)}}">Delete</a>
                                                             </td>
 
                                                         </tr>

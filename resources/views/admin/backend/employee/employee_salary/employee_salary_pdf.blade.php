@@ -12,39 +12,35 @@
                     <div class="col-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Employee Salary List</h3>
-                                <a style="float: right" class="btn btn-success" href="{{route("add.employee")}}">ADD Salary</a>
+                                <h3 class="box-title">Employee Salary Details</h3>
                             </div>
 
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                        <strong>Name:{{$allData->name}}</strong><br>
+                                        <strong>ID_No : {{$allData->id_no}}</strong>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                                     <thead>
                                                     <tr role="row">
                                                         <th width="5%">SL</th>
-                                                        <th width="10%">ID No</th>
-                                                        <th width="15%">Mobile</th>
-                                                        <th width="10%">Gender</th>
-                                                        <th width="15%">Joining Date</th>
-                                                        <th width="10%">Salary</th>
-                                                        <th width="20%">Action</th>
+                                                        <th width="10%">Previous Salary</th>
+                                                        <th width="15%">Present Salary</th>
+                                                        <th width="10%">Increment Salary</th>
+                                                        <th width="15%">Effected Salary</th>
                                                     </thead>
-                                                    @foreach($allData as $key => $value)
+                                                    @foreach($salaryLog as $key => $value)
                                                         <tbody>
 
                                                         <tr role="row" class="even">
                                                             <td>{{$key +1}}</td>
-                                                            <td >{{$value->id_no}}</td>
-                                                            <td >{{$value->mobile}}</td>
-                                                            <td >{{$value->gender}}</td>
-                                                            <td >{{$value->join_date}}</td>
-                                                            <td >{{$value->salary}}</td>
-                                                            <td>
-                                                                <a title="Increment" class="btn btn-info" href="{{route("employee.salary.increment",$value->id)}}"><i class="fa fa-plus-circle"></i></a>
-                                                                <a title="Details" class="btn btn-danger" href="{{route("employee.salary.details",$value->id)}}"><i class="fa fa-eye"></i></a>
-                                                            </td>
-
+                                                            <td >{{$value->previous_salary}}</td>
+                                                            <td >{{$value->present_salary}}</td>
+                                                            <td >{{$value->increment_salary}}</td>
+                                                            <td >{{$value->effected_salary}}</td>
                                                         </tr>
                                                         </tbody>
                                                     @endforeach

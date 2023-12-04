@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EmployeeSalaryLog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PDF;
 
 class EmployeeSalaryController extends Controller
 {
@@ -45,5 +46,15 @@ class EmployeeSalaryController extends Controller
         );
 
         return redirect()->route('employee.salary')->with($notification);
+    }
+
+    public function EmployeeSalaryDetails($id){
+        $data['allData'] = User::find($id);
+        $data['salaryLog'] = EmployeeSalaryLog::where('employee_id',$id)->get();
+//        dd( $data['salaryLog']->toArray());
+
+        return view('admin.backend.employee.employee_salary.employee_salary_pdf', $data);
+
+
     }
 }
