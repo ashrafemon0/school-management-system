@@ -195,6 +195,9 @@ Route::prefix('student')->group(function (){
         Route::get('salary/details/{id}',[EmployeeSalaryController::class,'EmployeeSalaryDetails'])->name('employee.salary.details');
 
         Route::get('/leave/view',[EmployeeLeaveController::class,'EmployeeLeaveView'])->name('employee.leave');
+        Route::get('/leave/Add',[EmployeeLeaveController::class,'EmployeeLeaveAdd'])->name('add.employee.leave');
+        Route::post('/leave/store',[EmployeeLeaveController::class,'EmployeeLeaveStore'])->name('store.employee.leave');
+        Route::get('/leave/edit/{id}',[EmployeeLeaveController::class,'EmployeeLeaveEdit'])->name('leave.edit');
     });
 
 

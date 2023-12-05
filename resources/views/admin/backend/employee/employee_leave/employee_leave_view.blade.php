@@ -13,7 +13,7 @@
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Employee Leave</h3>
-                                <a style="float: right" class="btn btn-success" href="{{route("add.designation")}}">ADD Leave</a>
+                                <a style="float: right" class="btn btn-success" href="{{route("add.employee.leave")}}">ADD Employee Leave</a>
                             </div>
 
                             <!-- /.box-header -->
@@ -22,19 +22,27 @@
                                     <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                                     <thead>
                                                     <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 20.562px;">SL</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 240.562px;">Designation</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 119.469px;">Action</th>
+                                                        <th>SL</th>
+                                                        <th>Name</th>
+                                                        <th>ID No</th>
+                                                        <th>Leave Purpose</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
+                                                        <th>Action</th>
                                                     </thead>
-                                                    @foreach($studentDesignation as $key => $designation)
+                                                    @foreach($allData as $key => $leave)
                                                         <tbody>
 
                                                         <tr role="row" class="even">
                                                             <td>{{$key +1}}</td>
-                                                            <td class="sorting_1">{{$designation->name}}</td>
+                                                            <td>{{$leave['user']['name']}}</td>
+                                                            <td>{{$leave['user']['id_no']}}</td>
+                                                            <td>{{$leave['LeavePurpose']['name']}}</td>
+                                                            <td>{{$leave->start_date}}</td>
+                                                            <td>{{$leave->end_date}}</td>
                                                             <td>
-                                                                <a class="btn btn-info" href="{{route("designation.edit",$designation->id)}}">Edit</a>
-                                                                <a id="delete" class="btn btn-danger" href="{{route("designation.delete",$designation->id)}}">Delete</a>
+                                                                <a class="btn btn-info" href="{{route("leave.edit",$leave->id)}}">Edit</a>
+                                                                <a id="delete" class="btn btn-danger" href="{{route("designation.delete",$leave->id)}}">Delete</a>
                                                             </td>
 
                                                         </tr>
