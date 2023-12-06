@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\EmployeeManage\EmployeeAttendanceController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeLeaveController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeRegController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeSalaryController;
@@ -188,16 +189,24 @@ Route::prefix('student')->group(function (){
         Route::post('/update/{id}',[EmployeeRegController::class,'EmployeeUpdate'])->name('update.employee.reg');
         Route::get('/details/{id}',[EmployeeRegController::class,'EmployeeDetails'])->name('employee.details');
 
-
+        //Employee Salary Route
         Route::get('/salary',[EmployeeSalaryController::class,'EmployeeSalaryView'])->name('employee.salary');
         Route::get('/salary/increment/{id}',[EmployeeSalaryController::class,'EmployeeSalaryIncrement'])->name('employee.salary.increment');
         Route::post('/salary/store/{id}',[EmployeeSalaryController::class,'EmployeeSalaryStore'])->name('store.salary.employee');
         Route::get('salary/details/{id}',[EmployeeSalaryController::class,'EmployeeSalaryDetails'])->name('employee.salary.details');
 
+        //Employee Leave Route
         Route::get('/leave/view',[EmployeeLeaveController::class,'EmployeeLeaveView'])->name('employee.leave');
         Route::get('/leave/Add',[EmployeeLeaveController::class,'EmployeeLeaveAdd'])->name('add.employee.leave');
         Route::post('/leave/store',[EmployeeLeaveController::class,'EmployeeLeaveStore'])->name('store.employee.leave');
         Route::get('/leave/edit/{id}',[EmployeeLeaveController::class,'EmployeeLeaveEdit'])->name('leave.edit');
+        Route::post('/leave/update/{id}',[EmployeeLeaveController::class,'EmployeeLeaveUpdate'])->name('update.employee.leave');
+        Route::get('/leave/delete/{id}',[EmployeeLeaveController::class,'EmployeeLeaveDelete'])->name('leave.delete');
+
+        //Employee Leave Attendance Route
+        Route::get('/attendance/view',[EmployeeAttendanceController::class,'EmployeeAttendanceView'])->name('employee.attendance');
+        Route::get('/attendance/Add',[EmployeeAttendanceController::class,'EmployeeAttendanceAdd'])->name('add.employee.attendance');
+
     });
 
 

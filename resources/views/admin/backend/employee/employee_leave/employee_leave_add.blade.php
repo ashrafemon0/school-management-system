@@ -59,7 +59,7 @@
                                                         @endforeach
                                                         <option value="0">New Purpose</option>
                                                     </select>
-                                                    <input type="text" name="" id="another_purpose" class="form-control" placeholder="Write Purpose" style="display: none">
+                                                    <input type="text" name="name" id="another_purpose" class="form-control" placeholder="Write Purpose" style="display: none">
                                                 </div>
                                                 @error("leave_purpose_id")
                                                 <span class="text-danger">{{$message}}</span>

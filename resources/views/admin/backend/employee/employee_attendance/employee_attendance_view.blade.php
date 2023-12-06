@@ -12,8 +12,8 @@
                     <div class="col-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Employee Leave</h3>
-                                <a style="float: right" class="btn btn-success" href="{{route("add.employee.leave")}}">ADD Employee Leave</a>
+                                <h3 class="box-title">Employee Attendance</h3>
+                                <a style="float: right" class="btn btn-success" href="{{route("add.employee.attendance")}}">ADD Employee Attendance</a>
                             </div>
 
                             <!-- /.box-header -->
@@ -25,9 +25,8 @@
                                                         <th>SL</th>
                                                         <th>Name</th>
                                                         <th>ID No</th>
-                                                        <th>Leave Purpose</th>
-                                                        <th>Start Date</th>
-                                                        <th>End Date</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
                                                     </thead>
                                                     @foreach($allData as $key => $leave)

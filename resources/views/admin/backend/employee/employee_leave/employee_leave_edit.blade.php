@@ -20,7 +20,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action="{{route("store.employee.leave")}}">
+                                <form method="post" action="{{route("update.employee.leave",$dataEdit->id)}}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
