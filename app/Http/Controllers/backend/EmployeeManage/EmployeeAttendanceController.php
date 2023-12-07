@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend\EmployeeManage;
 
 use App\Http\Controllers\Controller;
 use App\Models\EmployeeAttendance;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeAttendanceController extends Controller
@@ -16,6 +17,16 @@ class EmployeeAttendanceController extends Controller
 
     public function EmployeeAttendanceAdd(){
 
-        return view('admin.backend.employee.employee_attendance.employee_attendance_add');
+        $data['employee'] = User::where('usertype','employee')->get();
+//        dd($data['employee']->toArray());
+        return view('admin.backend.employee.employee_attendance.employee_attendance_add',$data);
+    }
+
+    public function EmployeeAttendanceStore(Request $request){
+
+        $countEmployee = count($request->employee_id);
+        for ($i=0; $i < $countEmployee; $i++){
+            $attend_status = 'atten_status';
+        }
     }
 }

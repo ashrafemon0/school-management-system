@@ -206,6 +206,7 @@ Route::prefix('student')->group(function (){
         //Employee Leave Attendance Route
         Route::get('/attendance/view',[EmployeeAttendanceController::class,'EmployeeAttendanceView'])->name('employee.attendance');
         Route::get('/attendance/Add',[EmployeeAttendanceController::class,'EmployeeAttendanceAdd'])->name('add.employee.attendance');
+        Route::get('/attendance/store',[EmployeeAttendanceController::class,'EmployeeAttendanceStore'])->name('store.employee.attendance');
 
     });
 

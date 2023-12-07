@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col">
 
-                            <form method="post" action="">
+                            <form method="post" action="{{route('store.employee.attendance')}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -58,28 +58,28 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-
-                                                        <tr id="div" class="text-center">
-                                                            <input type="hidden" name="employee_id[]" value="">
-                                                            <td></td>
-                                                            <td></td>
+                                                        @foreach($employee as $key => $employees)
+                                                        <tr id="div{{$employees->id}}" class="text-center">
+                                                            <input type="hidden" name="employee_id[]" value="{{$employees->id}}">
+                                                            <td>{{$key +1}}</td>
+                                                            <td>{{$employees->name}}</td>
 
                                                             <td colspan="3">
                                                                 <div class="switch-toggle switch-3 switch-candy">
 
-                                                                    <input name="atten_status" type="radio" value="Present" id="present" checked="checked">
-                                                                    <label for="present">Present</label>
+                                                                    <input name="atten_status{{$key}}" type="radio" value="Present" id="present{{$key}}" checked="checked">
+                                                                    <label for="present{{$key}}">Present</label>
 
-                                                                    <input name="atten_status" value="Leave" type="radio" id="leave"  >
-                                                                    <label for="leave">Leave</label>
+                                                                    <input name="atten_status{{$key}}" value="Leave" type="radio" id="leave{{$key}}"  >
+                                                                    <label for="leave{{$key}}">Leave</label>
 
-                                                                    <input name="atten_status" value="Absent"  type="radio" id="absent"  >
-                                                                    <label for="absent">Absent</label>
+                                                                    <input name="atten_status{{$key}}" value="Absent"  type="radio" id="absent{{$key}}"  >
+                                                                    <label for="absent{{$key}}">Absent</label>
 
                                                                 </div>
                                                             </td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
 
