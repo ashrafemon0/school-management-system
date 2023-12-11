@@ -12,7 +12,7 @@ class EmployeeLeave extends Model
     public function user(){
         return $this->belongsTo(user::class,'employee_id','id');
     }
-    public function LeavePurpose(){
+    public function Purpose(){
         return $this->belongsTo(LeavePurpose::class,'leave_purpose_id','id');
     }
 }
