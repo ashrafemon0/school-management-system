@@ -207,7 +207,8 @@ Route::prefix('student')->group(function (){
         Route::get('/attendance/view',[EmployeeAttendanceController::class,'EmployeeAttendanceView'])->name('employee.attendance');
         Route::get('/attendance/Add',[EmployeeAttendanceController::class,'EmployeeAttendanceAdd'])->name('add.employee.attendance');
         Route::post('/attendance/store',[EmployeeAttendanceController::class,'EmployeeAttendanceStore'])->name('store.employee.attendance');
-
+        Route::get('/attendance/edit/{data}',[EmployeeAttendanceController::class,'EmployeeAttendanceEdit'])->name('employee.attendance.edit');
+        Route::get('/attendance/details/{data}',[EmployeeAttendanceController::class,'EmployeeAttendanceDetails'])->name('employee.attendance.details');
     });
 
 

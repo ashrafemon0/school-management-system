@@ -37,7 +37,7 @@
                                                             <td>{{$key +1}}</td>
                                                             <td>{{$leave['user']['name']}}</td>
                                                             <td>{{$leave['user']['id_no']}}</td>
-                                                            <td>{{$leave['LeavePurpose']['name']}}</td>
+                                                            <td>{{$leave['Purpose']['name']}}</td>
                                                             <td>{{$leave->start_date}}</td>
                                                             <td>{{$leave->end_date}}</td>
                                                             <td>

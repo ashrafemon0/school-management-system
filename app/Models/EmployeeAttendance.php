@@ -12,5 +12,4 @@ class EmployeeAttendance extends Model
         return $this->belongsTo(user::class,'employee_id','id');
     }
 
-
 }
