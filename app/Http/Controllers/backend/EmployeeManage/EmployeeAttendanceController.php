@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class EmployeeAttendanceController extends Controller
 {
     public function EmployeeAttendanceView(){
-        $data['allData'] = EmployeeAttendance::orderBy('id','desc')->get();
-//dd($data['allData']->toArray());
+        $data['allData'] = EmployeeAttendance::select('date')->groupBy('date')->orderBy('id','DESC')->get();
+        //$data['allData'] = EmployeeAttendance::orderBy('id','desc')->get();
+        //dd($data['allData']->toArray());
         return view('admin.backend.employee.employee_attendance.employee_attendance_view',$data);
     }
 
@@ -25,6 +26,7 @@ class EmployeeAttendanceController extends Controller
     public function EmployeeAttendanceStore(Request $request){
 
         $countEmployee = count($request->employee_id);
+
         for ($i=0; $i < $countEmployee; $i++){
             $attend_status = 'atten_status'.$i;
             $attend = new EmployeeAttendance();
@@ -32,14 +34,14 @@ class EmployeeAttendanceController extends Controller
             $attend->employee_id = $request->employee_id[$i];
             $attend->atten_status = $request->$attend_status;
             $attend->save();
-
-            $notification = array(
-                'message' => 'Employee Leave Insert Successfully',
-                'alert-type' => 'success'
-            );
-
-            return redirect()->route('employee.attendance')->with($notification);
         }
+
+        $notification = array(
+            'message' => 'Employee Leave Insert Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('employee.attendance')->with($notification);
     }
 
     public function EmployeeAttendanceEdit($date){
@@ -50,6 +52,7 @@ class EmployeeAttendanceController extends Controller
 
     public function EmployeeAttendanceDetails($date){
         $data['details'] = EmployeeAttendance::where('date',$date)->get();
+        //dd($data['details']->toArray());
         return view('admin.backend.employee.employee_attendance.employee_attendance_details',$data);
 
     }
