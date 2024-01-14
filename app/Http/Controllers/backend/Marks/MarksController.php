@@ -12,8 +12,8 @@ class MarksController extends Controller
 {
     public function StudentMarksAdd(){
 
-        $data['studentClass'] = StudentClass::all();
-        $data['studentYear'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['years'] = StudentYear::all();
         $data['exam'] = StudentExamModel::all();
 
         return view('admin.backend.Marks.marks_add',$data);

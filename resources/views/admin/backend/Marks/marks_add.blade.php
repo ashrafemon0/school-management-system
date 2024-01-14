@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 
 @section('admin')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <div class="content-wrapper" style="min-height: 984.547px;">
         <div class="container-full">
@@ -25,9 +25,9 @@
                                                 <h5>Class<span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <select name="class_id" id="class_id" required="" class="form-control">
-                                                        <option value="">Select User Class</option>
-                                                        @foreach($studentClass as $studentClasses)
-                                                            <option value="{{$studentClasses->id}}" {{ (@$class_id == $studentClasses->id)? 'selected': ''}}>{{$studentClasses->name}}</option>
+                                                        <option value="" selected="" disabled="">Select Class</option>
+                                                        @foreach($classes as $class)
+                                                            <option value="{{ $class->id }}">{{ $class->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -39,9 +39,9 @@
                                                 <h5>Year<span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <select name="year_id" id="year_id" required="" class="form-control">
-                                                        <option value="">Select User Year</option>
-                                                        @foreach($studentYear as $studentYears)
-                                                            <option value="{{$studentYears->id}}" {{ (@$year_id == $studentYears->id)? 'selected': ''}}>{{$studentYears->year}}</option>
+                                                        <option value="" selected="" disabled="">Select Year</option>
+                                                        @foreach($years as $year)
+                                                            <option value="{{ $year->id }}" >{{ $year->year }}</option>
                                                         @endforeach
 
                                                     </select>
@@ -54,7 +54,7 @@
                                                 <h5>Subject<span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <select name="subject_id" id="subject_id" required="" class="form-control">
-                                                        <option selected="">Select Subject</option>
+                                                        <option  selected="" >Select Subject</option>
 
                                                     </select>
                                                 </div>
