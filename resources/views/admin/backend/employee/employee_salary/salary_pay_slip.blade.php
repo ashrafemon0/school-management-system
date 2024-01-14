@@ -41,8 +41,8 @@
         </td>
     </tr>
 </table>
-@php
 
+@php
 
     $date = date('Y-m',strtotime($details['0']->date));
 
@@ -51,7 +51,7 @@
             }
                $totalAttend = App\Models\EmployeeAttendance::with(['user'])->where($where)->where('employee_id',$details['0']->employee_id)->get();
 
-            $salary = (float)$details['user']['salary'];
+            $salary = (float)$details['0']['user']['salary'];
             $perDaySalary = (float)$salary/30;
              $absentCount = count($totalAttend->where('atten_status','Absent'));
             $totalSalaryMinus = (float)$absentCount*(float)$perDaySalary;
@@ -61,6 +61,44 @@
 
 
 
+<table>
+    <tr>
+        <th width="10%">SL</th>
+        <th width="45%">Employee Details</th>
+        <th width="45%">Employee Data</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><b>Employee Name</b></td>
+        <td>{{ $details['0']['user']['name'] }}</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><b>Basic Salary</b></td>
+        <td>{{ $details['0']['user']['salary'] }}</td>
+    </tr>
+
+    <tr>
+        <td>3</td>
+        <td><b>Total Absent for This Month</b></td>
+        <td>{{ $absentCount }}</td>
+    </tr>
+
+    <tr>
+        <td>4</td>
+        <td><b>Month</b></td>
+        <td>{{ date('M Y',strtotime($details['0']->date)) }}</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td><b>Salary This Month</b></td>
+        <td>{{ $TotalSalary }}</td>
+    </tr>
+
+
+</table>
+<br> <br>
+
 
 <table>
     <tr>
@@ -68,59 +106,37 @@
         <th width="45%">Employee Details</th>
         <th width="45%">Employee Data</th>
     </tr>
-
     <tr>
         <td>1</td>
-        <td>Employee Name</td>
-        <td>{{$details['0']['user']['name']}}</td>
+        <td><b>Employee Name</b></td>
+        <td>{{ $details['0']['user']['name'] }}</td>
     </tr>
     <tr>
         <td>2</td>
-        <td>Employee ID No</td>
-        <td></td>
+        <td><b>Basic Salary</b></td>
+        <td>{{ $details['0']['user']['salary'] }}</td>
     </tr>
+
+    <tr>
+        <td>3</td>
+        <td><b>Total Absent for This Month</b></td>
+        <td>{{ $absentCount }}</td>
+    </tr>
+
     <tr>
         <td>4</td>
-        <td>Father Name</td>
-        <td></td>
+        <td><b>Month</b></td>
+        <td>{{ date('M Y',strtotime($details['0']->date)) }}</td>
     </tr>
     <tr>
         <td>5</td>
-        <td>Mother Name</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Mobile</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>Designation</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>Birth Date</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>Religion</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>Gender</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>Salary</td>
-        <td></td>
+        <td><b>Salary This Month</b></td>
+        <td>{{ $TotalSalary }}</td>
     </tr>
 
+
 </table>
+
 <br> <br>
 <i style="font-size: 10px; float: right;">Print Data : {{ date("d M Y") }}</i>
 </body>

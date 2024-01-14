@@ -6,6 +6,8 @@ use App\Http\Controllers\backend\EmployeeManage\EmployeeLeaveController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeMonthlySalaryController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeRegController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeSalaryController;
+use App\Http\Controllers\backend\Marks\GetSubjectController;
+use App\Http\Controllers\backend\Marks\MarksController;
 use App\Http\Controllers\backend\setupManagement\DesignationController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryAmountController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryController;
@@ -215,9 +217,14 @@ Route::prefix('student')->group(function (){
         Route::get('/monthly/salary/view',[EmployeeMonthlySalaryController::class,'EmployeeMonthlySalaryView'])->name('employee.monthly.salary');
         Route::get('/monthly/salary/get',[EmployeeMonthlySalaryController::class,'EmployeeMonthlySalaryGet'])->name('employee.monthly.salary.get');
         Route::get('/monthly/salary/payslip/{employee_id}',[EmployeeMonthlySalaryController::class,'EmployeeMonthlySalaryPayslip'])->name('employee.monthly.salary.payslip');
+
     });
+    Route::prefix('marks')->group(function () {
+        Route::get('/marks/entry/add', [MarksController::class, 'StudentMarksAdd'])->name('student.marks.add');
 
 
+    });
+    Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
 });
 
 
