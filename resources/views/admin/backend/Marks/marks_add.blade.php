@@ -1,6 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+<<<<<<< HEAD
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+>>>>>>> 001e104fcc67b0e7fd5ec022ebe34f7b2afc3527
 
     <div class="content-wrapper">
         <div class="container-full">
@@ -23,8 +27,24 @@
                                 <form method="post" action="">
                                     @csrf
                                     <div class="row">
+<<<<<<< HEAD
 
 
+=======
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <h5>Class<span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <select name="class_id" id="class_id" required="" class="form-control">
+                                                        <option value="" selected="" disabled="">Select Class</option>
+                                                        @foreach($classes as $class)
+                                                            <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+>>>>>>> 001e104fcc67b0e7fd5ec022ebe34f7b2afc3527
 
                                         <div class="col-md-3">
 
@@ -51,11 +71,16 @@
                                             <div class="form-group">
                                                 <h5>Class <span class="text-danger"> </span></h5>
                                                 <div class="controls">
+<<<<<<< HEAD
                                                     <select name="class_id" id="class_id"  required="" class="form-control">
                                                         <option value="" selected="" disabled="">Select Class</option>
                                                         @foreach($classes as $class)
                                                             <option value="{{ $class->id }}">{{ $class->name }}</option>
                                                         @endforeach
+=======
+                                                    <select name="subject_id" id="subject_id" required="" class="form-control">
+                                                        <option  selected="" >Select Subject</option>
+>>>>>>> 001e104fcc67b0e7fd5ec022ebe34f7b2afc3527
 
                                                     </select>
                                                 </div>
