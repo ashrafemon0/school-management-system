@@ -221,7 +221,9 @@ Route::prefix('student')->group(function (){
     });
     Route::prefix('marks')->group(function () {
         Route::get('/marks/entry/add', [MarksController::class, 'StudentMarksAdd'])->name('student.marks.add');
-
+        Route::post('/marks/entry/store', [MarksController::class, 'StudentMarksStore'])->name('student.marks.store');
+        Route::get('/marks/entry/Edit/', [MarksController::class, 'StudentMarksEdit'])->name('student.marks.edit');
+        Route::get('marks/getstudents/edit', [MarksController::class, 'MarksEditGetStudents'])->name('student.edit.getstudents');
 
     });
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
