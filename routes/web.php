@@ -225,6 +225,7 @@ Route::prefix('student')->group(function (){
 
     });
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
+    Route::get('student/marks/getstudents', [GetSubjectController::class, 'GetStudents'])->name('student.marks.getstudents');
 });
 
 
