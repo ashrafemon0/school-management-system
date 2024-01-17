@@ -13,4 +13,27 @@ class GradeController extends Controller
 
         return view('admin.backend.Marks.marks_grade_view',$data);
     }
+    public function StudentMarksGradeAdd(){
+        return view('admin.backend.Marks.grade_add');
+    }
+
+    public function StudentMarksGradeStore(Request $request){
+        $data = new StudentGrade();
+        $data->grade_name = $request->grade_name;
+        $data->grade_point = $request->grade_point;
+        $data->start_mark = $request->start_mark;
+        $data->end_mark = $request->end_mark;
+        $data->start_point = $request->start_point;
+        $data->end_point = $request->end_point;
+        $data->remarks = $request->remark;
+        $data->save();
+
+        $notification = array(
+            'message' => 'Grade Marks Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('student.marks.grade')->with($notification);
+
+    }
 }

@@ -228,6 +228,9 @@ Route::prefix('student')->group(function (){
 
         //Marks Grade Route
         Route::get('/marks/grade/view', [GradeController::class, 'StudentMarksGrade'])->name('student.marks.grade');
+        Route::get('/marks/grade/add', [GradeController::class, 'StudentMarksGradeAdd'])->name('add.grade');
+        Route::post('/marks/grade/store', [GradeController::class, 'StudentMarksGradeStore'])->name('store.student.grade');
+
 
     });
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
