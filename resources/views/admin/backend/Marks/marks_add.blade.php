@@ -30,7 +30,7 @@
                                             <select name="year_id" id="year_id" required="" class="form-control">
                                                 <option value="" selected="" disabled="">Select Year</option>
                                                 @foreach($years as $year)
-                                                    <option value="{{ $year->id }}" >{{ $year->year }}</option>
+                                                    <option value="{{ $year->id }}" >{{$year->year}}</option>
                                                 @endforeach
 
                                             </select>
@@ -74,7 +74,6 @@
                                 </div> <!-- End Col md 3 -->
 
                                 <div class="col-md-3">
-
                                     <div class="form-group">
                                         <h5>Exam Type <span class="text-danger"> </span></h5>
                                         <div class="controls">

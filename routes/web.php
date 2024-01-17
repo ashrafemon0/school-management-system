@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\EmployeeManage\EmployeeLeaveController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeMonthlySalaryController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeRegController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeSalaryController;
+use App\Http\Controllers\backend\Grade\GradeController;
 use App\Http\Controllers\backend\Marks\GetSubjectController;
 use App\Http\Controllers\backend\Marks\MarksController;
 use App\Http\Controllers\backend\setupManagement\DesignationController;
@@ -222,8 +223,11 @@ Route::prefix('student')->group(function (){
     Route::prefix('marks')->group(function () {
         Route::get('/marks/entry/add', [MarksController::class, 'StudentMarksAdd'])->name('student.marks.add');
         Route::post('/marks/entry/store', [MarksController::class, 'StudentMarksStore'])->name('student.marks.store');
-        Route::get('/marks/entry/Edit/', [MarksController::class, 'StudentMarksEdit'])->name('student.marks.edit');
-        Route::get('marks/getstudents/edit', [MarksController::class, 'MarksEditGetStudents'])->name('student.edit.getstudents');
+        Route::get('/marks/entry/edit', [MarksController::class, 'StudentMarksEdit'])->name('student.marks.edit');
+        Route::get('/marks/getstudents/edit', [MarksController::class, 'MarksEditGetStudents'])->name('student.edit.getstudents');
+
+        //Marks Grade Route
+        Route::get('/marks/grade/view', [GradeController::class, 'StudentMarksGrade'])->name('student.marks.grade');
 
     });
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');

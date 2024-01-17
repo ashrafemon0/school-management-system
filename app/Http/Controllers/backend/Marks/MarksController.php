@@ -8,6 +8,8 @@ use App\Models\StudentExamModel;
 use App\Models\StudentMarks;
 use App\Models\StudentYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use mysql_xdevapi\Exception;
 
 class MarksController extends Controller
 {
@@ -51,9 +53,23 @@ class MarksController extends Controller
         $data['classes'] = StudentClass::all();
         $data['exam_types'] = StudentExamModel::all();
 
-        return view('admin.backend.Marks.marks_edit',$data);
+        return view('admin.backend.Marks.marks_edit', $data);
     }
-    public function MarksEditGetStudents(){
 
+    public function MarksEditGetStudents(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+        $subject_id = $request->assign_subject_id;
+        $exam_type_id = $request->exam_type_id;
+
+        $data = StudentMarks::with(['student'])
+            ->where('year_id', $year_id)
+            ->where('class_id', $class_id)
+            ->where('subject_id', $subject_id)
+            ->where('exam_type_id', $exam_type_id)
+            ->get();
+
+        return response()->json($data);
     }
+
 }
