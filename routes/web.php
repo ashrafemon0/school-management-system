@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\Account\AccountStudentFeeController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeAttendanceController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeLeaveController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeMonthlySalaryController;
@@ -230,9 +231,19 @@ Route::prefix('student')->group(function (){
         Route::get('/marks/grade/view', [GradeController::class, 'StudentMarksGrade'])->name('student.marks.grade');
         Route::get('/marks/grade/add', [GradeController::class, 'StudentMarksGradeAdd'])->name('add.grade');
         Route::post('/marks/grade/store', [GradeController::class, 'StudentMarksGradeStore'])->name('store.student.grade');
+        Route::get('/marks/grade/edit/{id}', [GradeController::class, 'StudentMarksGradeEdit'])->name('employee.edit');
+        Route::post('/marks/grade/update/{id}', [GradeController::class, 'StudentMarksGradeUpdate'])->name('update.student.grade');
 
 
     });
+
+    Route::prefix('account')->group(function () {
+        Route::get('/student/fee/view', [AccountStudentFeeController::class, 'AccountStudentFeeView'])->name('account.student.fee.view');
+        Route::get('/student/fee/add', [AccountStudentFeeController::class, 'AccountStudentFeeAdd'])->name('account.add.student.fee');
+        Route::get('/student/fee/getStudent', [AccountStudentFeeController::class, 'AccountStudentFeeGetStudent'])->name('account.fee.getStudent');
+        Route::get('/student/fee/store', [AccountStudentFeeController::class, 'AccountStudentFeeStore'])->name('account.fee.store');
+    });
+
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
     Route::get('student/marks/getstudents', [GetSubjectController::class, 'GetStudents'])->name('student.marks.getstudents');
 });
