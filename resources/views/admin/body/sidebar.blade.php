@@ -56,11 +56,11 @@
                     <li><a href="{{route('change.password')}}"><i class="ti-more"></i>Change Password</a></li>
                 </ul>
             </li>
-
+            @if(Auth::user()->role == 'admin')
             <li class="treeview {{($prefix == '/setup')?'active':''}}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
-                    <span>Setup Management</span>
+                    <span>Student Setup</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -78,7 +78,8 @@
                     <li><a href="{{route('designation')}}"><i class="ti-more"></i>Designation</a></li>
                 </ul>
             </li>
-
+            @endif
+            @if(Auth::user()->role == 'admin')
             <li class="treeview {{($prefix == '/student')?'active':''}}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -89,13 +90,34 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('student.reg')}}"><i class="ti-more"></i>Student Registration</a></li>
+
                     <li><a href="{{route('student.roll.generate')}}"><i class="ti-more"></i>Student Roll Generate</a></li>
                     <li><a href="{{route('student.registration.fee')}}"><i class="ti-more"></i>Registration Fee</a></li>
                     <li><a href="{{route('student.tuition.fee')}}"><i class="ti-more"></i>Tuition Fee</a></li>
                     <li><a href="{{route('student.exam.fee')}}"><i class="ti-more"></i>Exam Fee</a></li>
                 </ul>
             </li>
+            @endif
+            @if(Auth::user()->role == 'Student')
+                <li class="treeview {{($prefix == '/student')?'active':''}}">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>Student Management</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('student.reg')}}"><i class="ti-more"></i>Student Registration</a></li>
 
+                        <li><a href="{{route('student.payment.add')}}"><i class="ti-more"></i>Payment</a></li>
+                        <li><a href="{{route('student.payment.view')}}"><i class="ti-more"></i>Payment History</a></li>
+                        <li><a href="{{route('student.tuition.fee')}}"><i class="ti-more"></i>Student Information</a></li>
+                        <li><a href="{{route('student.exam.fee')}}"><i class="ti-more"></i>Exam Fee</a></li>
+                    </ul>
+                </li>
+            @endif
+            @if(Auth::user()->role == 'admin')
             <li class="treeview {{($prefix == '/employee')?'active':''}}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -112,8 +134,8 @@
                     <li><a href="{{route('employee.monthly.salary')}}"><i class="ti-more"></i>Employee Monthly Salary</a></li>
                 </ul>
             </li>
-
-
+            @endif
+            @if(Auth::user()->role == 'admin')
             <li class="treeview {{($prefix == '/marks')?'active':''}}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -128,7 +150,8 @@
                     <li><a href="{{route('student.marks.grade')}}"><i class="ti-more"></i>Marks grade</a></li>
                 </ul>
             </li>
-
+            @endif
+            @if(Auth::user()->role == 'admin')
             <li class="treeview {{($prefix == '/account')?'active':''}}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -141,7 +164,7 @@
                     <li><a href="{{route('account.student.fee.view')}}"><i class="ti-more"></i>Student Fee</a></li>
                 </ul>
             </li>
-
+            @endif
 
             <li class="treeview ">
                 <a href="#">

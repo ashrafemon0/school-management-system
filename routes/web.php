@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\EmployeeManage\EmployeeSalaryController;
 use App\Http\Controllers\backend\Grade\GradeController;
 use App\Http\Controllers\backend\Marks\GetSubjectController;
 use App\Http\Controllers\backend\Marks\MarksController;
+use App\Http\Controllers\backend\payment\PaymentController;
 use App\Http\Controllers\backend\setupManagement\DesignationController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryAmountController;
 use App\Http\Controllers\backend\setupManagement\FeeCategoryController;
@@ -241,8 +242,18 @@ Route::prefix('student')->group(function (){
         Route::get('/student/fee/view', [AccountStudentFeeController::class, 'AccountStudentFeeView'])->name('account.student.fee.view');
         Route::get('/student/fee/add', [AccountStudentFeeController::class, 'AccountStudentFeeAdd'])->name('account.add.student.fee');
         Route::get('/student/fee/getStudent', [AccountStudentFeeController::class, 'AccountStudentFeeGetStudent'])->name('account.fee.getStudent');
-        Route::get('/student/fee/store', [AccountStudentFeeController::class, 'AccountStudentFeeStore'])->name('account.fee.store');
+        Route::post('/student/fee/store', [AccountStudentFeeController::class, 'AccountStudentFeeStore'])->name('account.fee.store');
     });
+
+    Route::prefix('Student')->group(function () {
+        Route::get('/student/payment/view', [PaymentController::class, 'StudentPaymentView'])->name('student.payment.view');
+        Route::get('/student/payment/add', [PaymentController::class, 'StudentPaymentAdd'])->name('student.payment.add');
+        Route::post('/student/payment/store', [PaymentController::class, 'StudentPaymentStore'])->name('student.payment.store');
+        Route::get('/student/credit-card-payment', [PaymentController::class, 'showCreditCardPaymentPage'])->name('credit_card_payment_page');
+
+
+    });
+
 
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
     Route::get('student/marks/getstudents', [GetSubjectController::class, 'GetStudents'])->name('student.marks.getstudents');

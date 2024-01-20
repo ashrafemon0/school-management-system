@@ -36,7 +36,7 @@
                                                         <option value="">Select User Role</option>
                                                         <option value="admin" {{($userEdit->role == 'admin' ? 'selected': '')}}>Admin</option>
                                                         <option value="operator" {{($userEdit->role == 'operator' ? 'selected': '')}}>User</option>
-
+                                                        <option value="Student" {{($userEdit->role == 'Student' ? 'selected': '')}}>Student</option>
                                                     </select>
                                                     <div class="help-block"></div></div>
                                             </div>

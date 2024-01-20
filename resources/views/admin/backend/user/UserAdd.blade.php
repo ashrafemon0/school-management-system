@@ -36,6 +36,7 @@
                                                         <option value="">Select User Role</option>
                                                         <option value="admin">Admin</option>
                                                         <option value="operator">Operator</option>
+                                                        <option value="student">Student</option>
 
                                                     </select>
                                                     <div class="help-block"></div></div>
@@ -51,7 +52,11 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-
+                                            <div class="form-group">
+                                                <h5>User Password <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="password" name="password" class="form-control" required="" data-validation-required-message="This field is required"> <div class="help-block"></div></div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="text-xs-right">

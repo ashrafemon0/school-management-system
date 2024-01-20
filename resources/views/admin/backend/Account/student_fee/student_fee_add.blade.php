@@ -20,9 +20,6 @@
                             </div>
 
                             <div class="box-body">
-
-                                <form method="post" action="{{route('student.marks.store')}}">
-                                    @csrf
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -76,7 +73,7 @@
                                         <div class="col-md-3">
 
                                             <div class="form-group">
-                                                <h5>Subject <span class="text-danger"> </span></h5>
+                                                <h5>Date <span class="text-danger"> </span></h5>
                                                 <div class="controls">
                                                     <input type="date" name="date" class="form-control" >
                                                 </div>
@@ -115,6 +112,7 @@
                                                         @{{/each}}
                                                         </tbody>
                                                     </table>
+                                                        <button type="submit" class="btn btn-primary" style="margin-top: 10px">Submit</button>
                                                     </form>
                                                 </script>
 

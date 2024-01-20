@@ -51,7 +51,7 @@
                                                                 <td >{{$employee->code}}</td>
                                                             @endif
                                                             <td>
-                                                                <a class="btn btn-info" href="{{route("employee.edit",$grade->id)}}">Edit</a>
+                                                                <a class="btn btn-info" href="{{route("employee.edit",$studentFee->id)}}">Edit</a>
                                                             </td>
 
                                                         </tr>

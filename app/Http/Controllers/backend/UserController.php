@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function UserView(){
-        $viewUser['allData'] = User::where('usertype','admin')->get();
+        $viewUser['allData'] = User::all();
         return view('admin.backend.user.view_user',$viewUser);
     }
     public function UserAdd(){
