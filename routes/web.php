@@ -56,7 +56,9 @@ Route::middleware([
 });
 Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
 
-Route::group(['middleware'=>'auth'],function (){
+    // routes accessible only to admins
+
+Route::group(['middleware'=>'auth','role:admin'],function (){
 
 Route::prefix('user')->group(function (){
     Route::get('/view',[UserController::class,'UserView'])->name('user.view');
