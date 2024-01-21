@@ -58,7 +58,7 @@ Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout
 
     // routes accessible only to admins
 
-Route::group(['middleware'=>'auth','role:admin'],function (){
+Route::group(['middleware'=>'auth'],function (){
 
 Route::prefix('user')->group(function (){
     Route::get('/view',[UserController::class,'UserView'])->name('user.view');
@@ -189,6 +189,7 @@ Route::prefix('student')->group(function (){
 
 });
 
+
     Route::prefix('employee')->group(function (){
         Route::get('/reg/view',[EmployeeRegController::class,'EmployeeRegView'])->name('employee.reg');
         Route::get('/add',[EmployeeRegController::class,'EmployeeAdd'])->name('add.employee');
@@ -255,7 +256,6 @@ Route::prefix('student')->group(function (){
 
 
     });
-
 
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
     Route::get('student/marks/getstudents', [GetSubjectController::class, 'GetStudents'])->name('student.marks.getstudents');

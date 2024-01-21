@@ -20,7 +20,6 @@
 
         <!-- sidebar menu-->
         <ul class="sidebar-menu" data-widget="tree">
-            @role('admin')
             <li class="{{($route == 'dashboard')?'active':''}}">
                 <a href="{{route('dashboard')}}">
                     <i data-feather="pie-chart"></i>
@@ -42,7 +41,6 @@
                     </ul>
                 </li>
 
-                @endrole
             <li class="treeview {{($prefix == '/profile')?'active':''}}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -77,7 +75,6 @@
                     <li><a href="{{route('designation')}}"><i class="ti-more"></i>Designation</a></li>
                 </ul>
             </li>
-
             <li class="treeview {{($prefix == '/student')?'active':''}}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -95,12 +92,10 @@
                     <li><a href="{{route('student.exam.fee')}}"><i class="ti-more"></i>Exam Fee</a></li>
                 </ul>
             </li>
-
-
                 <li class="treeview {{($prefix == '/student')?'active':''}}">
                     <a href="#">
                         <i data-feather="message-circle"></i>
-                        <span>Student Management</span>
+                        <span>Student Management for role student</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
