@@ -58,5 +58,11 @@ class PaymentController extends Controller
         // Your logic to display the credit card payment page goes here
         return view('admin.backend.payment.credit_card_payment_page'); // Assuming you have a view file named credit_card_payment_page.blade.php
     }
+    public function StudentInformation(){
+
+    }
+    public function StudentHomeWork(){
+
+    }
 
 }

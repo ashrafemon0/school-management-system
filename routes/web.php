@@ -58,7 +58,7 @@ Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout
 
     // routes accessible only to admins
 
-Route::group(['middleware'=>'auth'],function (){
+Route::middleware(['admin'])->group(function () {
 
 Route::prefix('user')->group(function (){
     Route::get('/view',[UserController::class,'UserView'])->name('user.view');
@@ -248,19 +248,24 @@ Route::prefix('student')->group(function (){
         Route::post('/student/fee/store', [AccountStudentFeeController::class, 'AccountStudentFeeStore'])->name('account.fee.store');
     });
 
-    Route::prefix('Student')->group(function () {
-        Route::get('/student/payment/view', [PaymentController::class, 'StudentPaymentView'])->name('student.payment.view');
-        Route::get('/student/payment/add', [PaymentController::class, 'StudentPaymentAdd'])->name('student.payment.add');
-        Route::post('/student/payment/store', [PaymentController::class, 'StudentPaymentStore'])->name('student.payment.store');
-        Route::get('/student/credit-card-payment', [PaymentController::class, 'showCreditCardPaymentPage'])->name('credit_card_payment_page');
-
-
-    });
 
     Route::get('/marks/getsubject', [GetSubjectController::class, 'GetSubject'])->name('marks.getsubject');
     Route::get('student/marks/getstudents', [GetSubjectController::class, 'GetStudents'])->name('student.marks.getstudents');
 });
 
 
+Route::middleware(['student'])->group(function () {
+    Route::prefix('student')->group(function () {
+        Route::get('/reg/view',[StudentRegController::class,'StudentRegView'])->name('student.reg');
+        Route::get('/reg/add',[StudentRegController::class,'AddStudent'])->name('add.student');
+        Route::post('/reg/store',[StudentRegController::class,'StoreRegistration'])->name('store.student.reg');
 
+        Route::get('/payment/view', [PaymentController::class, 'StudentPaymentView'])->name('student.payment.view');
+        Route::get('/payment/add', [PaymentController::class, 'StudentPaymentAdd'])->name('student.payment.add');
+        Route::post('/payment/store', [PaymentController::class, 'StudentPaymentStore'])->name('student.payment.store');
+        Route::get('/credit-card-payment', [PaymentController::class, 'showCreditCardPaymentPage'])->name('credit_card_payment_page');
+        Route::get('/information', [PaymentController::class, 'StudentInformation'])->name('Student.information');
+        Route::get('/home/work', [PaymentController::class, 'StudentHomeWork'])->name('student.home.work');
 
+    });
+});
