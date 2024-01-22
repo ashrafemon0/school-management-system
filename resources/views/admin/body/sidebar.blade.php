@@ -106,7 +106,7 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('student.role.reg')}}"><i class="ti-more"></i>Student Registration</a></li>
+                        <li><a href="{{route('student.reg')}}"><i class="ti-more"></i>Student Registration</a></li>
 
                         <li><a href="{{route('student.payment.add')}}"><i class="ti-more"></i>Payment</a></li>
                         <li><a href="{{route('student.payment.view')}}"><i class="ti-more"></i>Payment History</a></li>

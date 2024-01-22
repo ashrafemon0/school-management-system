@@ -17,7 +17,7 @@ class StudentMiddleware
     {
         $user = auth()->user();
 
-        if ($user && $user->role == 'student') {
+        if ($user && ($user->role == 'student' || $user->role == 'admin')) {
             return $next($request);
         }
 
