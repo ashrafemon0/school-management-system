@@ -20,7 +20,7 @@
 
                             <div class="box-body">
 
-                                <form method="post" action="{{route('student.payment.store')}}">
+                                <form method="post" action="">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
@@ -130,19 +130,19 @@
 
                                     </div><!--  end row -->
                                     <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <h5>Payment Method <span class="text-danger"></span></h5>
-                                                <div class="controls">
-                                                    <select name="payment_method" required class="form-control">
-                                                        <option value="" selected disabled>Select Payment Method</option>
-                                                        <option value="credit_card">Credit Card</option>
-                                                        <option value="paypal">PayPal</option>
-                                                        <!-- Add more payment methods as needed -->
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+{{--                                        <div class="col-md-3">--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                <h5>Payment Method <span class="text-danger"></span></h5>--}}
+{{--                                                <div class="controls">--}}
+{{--                                                    <select name="payment_method" required class="form-control">--}}
+{{--                                                        <option value="" selected disabled>Select Payment Method</option>--}}
+{{--                                                        <option value="credit_card">Credit Card</option>--}}
+{{--                                                        <option value="paypal">PayPal</option>--}}
+{{--                                                        <!-- Add more payment methods as needed -->--}}
+{{--                                                    </select>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
 
                                         <div class="col-md-3 mt-5">
                                             <button type="submit" class="btn btn-primary" name="next">Next</button>
