@@ -187,6 +187,10 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+        'SslCommerz' => App\Library\SslCommerz\SslCommerzNotification::class,
     ])->toArray(),
+
+    'store_id' => env('STORE_ID', 'learn65af2e7aed3b9'),
+    'store_password' => env('STORE_PASSWORD', 'learn65af2e7aed3b9@ssl'),
 
 ];

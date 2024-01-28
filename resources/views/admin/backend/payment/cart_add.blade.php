@@ -15,12 +15,12 @@
                     <div class="col-12">
                         <div class="box bb-3 border-warning">
                             <div class="box-header">
-                                <h4 class="box-title">Student <strong>Payment</strong></h4>
+                                <h4 class="box-title">Student <strong>Cart</strong></h4>
                             </div>
 
                             <div class="box-body">
 
-                                <form method="post" action="">
+                                <form method="post" action="{{route('add.cart.store')}}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
@@ -129,27 +129,8 @@
                                         </div> <!-- End Col md 3 -->
 
                                     </div><!--  end row -->
-                                    <div class="row">
-{{--                                        <div class="col-md-3">--}}
-{{--                                            <div class="form-group">--}}
-{{--                                                <h5>Payment Method <span class="text-danger"></span></h5>--}}
-{{--                                                <div class="controls">--}}
-{{--                                                    <select name="payment_method" required class="form-control">--}}
-{{--                                                        <option value="" selected disabled>Select Payment Method</option>--}}
-{{--                                                        <option value="credit_card">Credit Card</option>--}}
-{{--                                                        <option value="paypal">PayPal</option>--}}
-{{--                                                        <!-- Add more payment methods as needed -->--}}
-{{--                                                    </select>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
 
-                                        <div class="col-md-3 mt-5">
-                                            <button type="submit" class="btn btn-primary" name="next">Next</button>
-                                        </div> <!-- End Col md 3 -->
-                                    </div>
-                                    <!--  ////////////////// Mark Entry table /////////////  -->
-
+                                        <input type="submit" class="btn btn-info" value="Next">
 
                                 </form>
 

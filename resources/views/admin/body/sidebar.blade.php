@@ -108,10 +108,11 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('student.reg')}}"><i class="ti-more"></i>Student Registration</a></li>
 
+                        <li><a href="{{route('student.add.cart')}}"><i class="ti-more"></i>Add to Cart</a></li>
                         <li><a href="{{route('student.payment.add')}}"><i class="ti-more"></i>Payment</a></li>
-                        <li><a href="{{route('student.payment.view')}}"><i class="ti-more"></i>Payment History</a></li>
-                        <li><a href="{{route('Student.information')}}"><i class="ti-more"></i>Student Information</a></li>
-                        <li><a href="{{route('student.home.work')}}"><i class="ti-more"></i>Home Work</a></li>
+{{--                        <li><a href="{{route('student.payment.view')}}"><i class="ti-more"></i>Payment History</a></li>--}}
+{{--                        <li><a href="{{route('Student.information')}}"><i class="ti-more"></i>Student Information</a></li>--}}
+{{--                        <li><a href="{{route('student.home.work')}}"><i class="ti-more"></i>Home Work</a></li>--}}
                     </ul>
                 </li>
             @endif

@@ -16,7 +16,7 @@ class SslCommerzPaymentController extends Controller
 
     public function exampleHostedCheckout()
     {
-        return view('exampleHosted');
+        return view('admin.backend.payment.exampleHosted');
     }
 
     public function index(Request $request)
@@ -24,6 +24,10 @@ class SslCommerzPaymentController extends Controller
         # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
+
+        $storeID = env('SSLCZ_STORE_ID');
+        $storePassword = env('SSLCZ_STORE_PASSWORD');
+//        dd($storeID,$storePassword);
 
         $post_data = array();
         $post_data['total_amount'] = '10'; # You cant not pay less than 10
@@ -79,7 +83,8 @@ class SslCommerzPaymentController extends Controller
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
-        $payment_options = $sslc->makePayment($post_data, 'hosted');
+        $payment_options = $sslc->makePayment($post_data, 'hosted', $storeID, $storePassword);
+        //dd($storeID, $storePassword, $post_data);
 
         if (!is_array($payment_options)) {
             print_r($payment_options);

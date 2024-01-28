@@ -261,19 +261,18 @@ Route::middleware(['student'])->group(function () {
         Route::get('/reg/add',[StudentRegController::class,'AddStudent'])->name('add.student');
         Route::post('/reg/store',[StudentRegController::class,'StoreRegistration'])->name('store.student.reg');
 
-//        Route::get('/payment/view', [PaymentController::class, 'StudentPaymentView'])->name('student.payment.view');
-////        Route::get('/payment/add', [PaymentController::class, 'StudentPaymentAdd'])->name('student.payment.add');
-////        Route::post('/payment/store', [PaymentController::class, 'StudentPaymentStore'])->name('student.payment.store');
+        Route::get('/add/cart', [PaymentController::class, 'StudentCartAdd'])->name('student.add.cart');
+        Route::post('/add/cart/store', [PaymentController::class, 'StudentCartStore'])->name('add.cart.store');
 //        Route::get('/credit-card-payment', [PaymentController::class, 'showCreditCardPaymentPage'])->name('credit_card_payment_page');
 //        Route::get('/information', [PaymentController::class, 'StudentInformation'])->name('Student.information');
 //        Route::get('/home/work', [PaymentController::class, 'StudentHomeWork'])->name('student.home.work');
 
 
 // SSLCOMMERZ Start
-        Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('student.payment.add');
-        Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+//        Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('student.payment.add');
+        Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('student.payment.add');
 
-        Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+        Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay');
         Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax'])->name('pay-via-ajax');
 
         Route::post('/success', [SslCommerzPaymentController::class, 'success']);

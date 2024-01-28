@@ -44,21 +44,21 @@
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">Product name</h6>
-                        <small class="text-muted">Brief description</small>
+                        <h6 class="my-0">Student name</h6>
+                        <small class="text-muted"></small>
                     </div>
                     <span class="text-muted">1000</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">Second product</h6>
+                        <h6 class="my-0">Student Class</h6>
                         <small class="text-muted">Brief description</small>
                     </div>
                     <span class="text-muted">50</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">Third item</h6>
+                        <h6 class="my-0">Fee Category</h6>
                         <small class="text-muted">Brief description</small>
                     </div>
                     <span class="text-muted">150</span>
@@ -71,8 +71,10 @@
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
-            <form action="{{ url('/pay') }}" method="POST" class="needs-validation">
-                <input type="hidden" value="{{ csrf_token() }}" name="_token" />
+            <form action="{{ route('pay') }}" method="POST" class="needs-validation">
+                <input type="hidden" name="STORE_PASSWORD" value="learn65af2e7aed3b9@ssl">
+                @csrf
+
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
