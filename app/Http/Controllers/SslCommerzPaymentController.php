@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\order;
 use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
@@ -33,6 +34,7 @@ class SslCommerzPaymentController extends Controller
         $post_data['total_amount'] = '10'; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
+
 
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = 'Customer Name';

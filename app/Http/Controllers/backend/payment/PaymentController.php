@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend\payment;
 
 use App\Http\Controllers\Controller;
+use App\Models\order;
 use App\Models\StudentClass;
 use App\Models\StudentFeeCategory;
 use App\Models\StudentPayment;
@@ -26,14 +27,14 @@ class PaymentController extends Controller
     {
 
         // Handle the form data and save to the database if needed
-        $data = new StudentPayment();
-        $data->user_name = $request->user_name;
+        $data = new order();
+        $data->name = $request->user_name;
         $data->class_name = $request->class_name;
-        $data->cat_name = $request->cat_name;
-        $data->user_id = $request->user_id;
+        $data->fee_category = $request->fee_category;
+        $data->student_id = $request->student_id;
         $data->date = $request->date;
         $data->amount = $request->amount;
-        $data->remark = $request->remark;
+        $data->remarks = $request->remark;
         $data->save();
 
         $notification = array(

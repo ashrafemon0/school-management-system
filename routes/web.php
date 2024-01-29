@@ -27,6 +27,7 @@ use App\Http\Controllers\backend\StudentManagment\StudentRegFeeController;
 use App\Http\Controllers\backend\StudentManagment\StudentRollGenerateController;
 use App\Http\Controllers\backend\StudentManagment\StudentTuitionFeeController;
 use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use Illuminate\Support\Facades\Route;
@@ -261,8 +262,20 @@ Route::middleware(['student'])->group(function () {
         Route::get('/reg/add',[StudentRegController::class,'AddStudent'])->name('add.student');
         Route::post('/reg/store',[StudentRegController::class,'StoreRegistration'])->name('store.student.reg');
 
-        Route::get('/add/cart', [PaymentController::class, 'StudentCartAdd'])->name('student.add.cart');
-        Route::post('/add/cart/store', [PaymentController::class, 'StudentCartStore'])->name('add.cart.store');
+//        Route::get('/add/cart', [PaymentController::class, 'StudentCartAdd'])->name('student.add.cart');
+//
+        Route::get('/product/view', [ProductsController::class, 'index'])->name('product.add.cart');
+        Route::get('/product/cart', [ProductsController::class, 'cart'])->name('cart');
+        Route::get('/add-to-cart/{id}', [ProductsController::class, 'addToCart'])->name('add_to_cart');
+        Route::patch('/product/update-cart', [ProductsController::class, 'update'])->name('update_cart');
+        Route::delete('/product/remove-from-cart', [ProductsController::class, 'remove'])->name('remove_from_cart');
+
+
+
+//        Route::get('/test/product/view', [ProductsController::class, 'TestIndex'])->name('test.add.cart');
+
+
+
 //        Route::get('/credit-card-payment', [PaymentController::class, 'showCreditCardPaymentPage'])->name('credit_card_payment_page');
 //        Route::get('/information', [PaymentController::class, 'StudentInformation'])->name('Student.information');
 //        Route::get('/home/work', [PaymentController::class, 'StudentHomeWork'])->name('student.home.work');
