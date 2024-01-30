@@ -17,21 +17,22 @@ class ProductsController extends Controller
         $user = Auth::user();
 
         // Check if the user is logged in and has a student_id
-        if ($user && $user->student_id) {
-            // Fetch data based on the student_id
-            $data['User'] = User::where('id', $user->id)->get();
-            $data['studentClass'] = StudentClass::where('student_id', $user->student_id)->get();
-            $data['FeeCategory'] = StudentFeeCategory::where('student_id', $user->student_id)->get();
-            $data['FeeCategoryAmount'] = StudentFeeCategoryAmount::where('student_id', $user->student_id)->get();
-        } else {
-            // If user is not logged in or does not have a student_id, show all data
-            $data['User'] = User::all();
-            $data['studentClass'] = StudentClass::all();
-            $data['FeeCategory'] = StudentFeeCategory::all();
-            $data['FeeCategoryAmount'] = StudentFeeCategoryAmount::all();
-        }
+//        if ($user && $user->student_id) {
+//            // Fetch data based on the student_id
+//            $data['User'] = User::where('id', $user->id)->get();
+//            $data['studentClass'] = StudentClass::where('student_id', $user->student_id)->get();
+//            $data['FeeCategory'] = StudentFeeCategory::where('student_id', $user->student_id)->get();
+//            $data['FeeCategoryAmount'] = StudentFeeCategoryAmount::where('student_id', $user->student_id)->get();
+//        } else {
+//            // If user is not logged in or does not have a student_id, show all data
+//            $data['User'] = User::all();
+//            $data['studentClass'] = StudentClass::all();
+//            $data['FeeCategory'] = StudentFeeCategory::all();
+//            $data['FeeCategoryAmount'] = StudentFeeCategoryAmount::all();
+//        }
+        $products = Product::all();
 
-        return view('admin.backend.payment.products',$data);
+        return view('admin.backend.payment.products',compact('products'));
     }
 
     public function cart()

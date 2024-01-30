@@ -175,7 +175,22 @@
                     <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li>
                 </ul>
             </li>
+            @if(Auth::user()->role == 'teacher')
+                <li class="treeview {{($prefix == '/teacher')?'active':''}}">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>Teacher Management</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('lesson.plan.view')}}"><i class="ti-more"></i>Lesson Plan</a></li>
 
+
+                    </ul>
+                </li>
+            @endif
 
             <li class="header nav-small-cap">User Interface</li>
 

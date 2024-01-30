@@ -37,6 +37,7 @@
                                                         <option value="admin">Admin</option>
                                                         <option value="operator">Operator</option>
                                                         <option value="student">Student</option>
+                                                        <option value="teacher">Teacher</option>
 
                                                     </select>
                                                     <div class="help-block"></div></div>

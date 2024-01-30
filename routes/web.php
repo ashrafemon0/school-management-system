@@ -26,6 +26,7 @@ use App\Http\Controllers\backend\StudentManagment\StudentRegController;
 use App\Http\Controllers\backend\StudentManagment\StudentRegFeeController;
 use App\Http\Controllers\backend\StudentManagment\StudentRollGenerateController;
 use App\Http\Controllers\backend\StudentManagment\StudentTuitionFeeController;
+use App\Http\Controllers\backend\Teacher\TeacherController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
@@ -294,5 +295,18 @@ Route::middleware(['student'])->group(function () {
 
         Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+    });
+});
+
+
+
+//Teacher Role Route Middleware
+Route::middleware(['teacher'])->group(function () {
+    Route::prefix('teacher')->group(function () {
+        Route::get('/lesson/view',[TeacherController::class,'LessonPlanView'])->name('lesson.plan.view');
+        Route::get('/lesson/add',[TeacherController::class,'AddLessonPlan'])->name('add.lesson.plan');
+        Route::post('/lesson/store',[TeacherController::class,'StoreLessonPlan'])->name('store.lesson.plan');
+
+
     });
 });
