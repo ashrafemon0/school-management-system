@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\Account\AccountSalaryController;
 use App\Http\Controllers\backend\Account\AccountStudentFeeController;
+use App\Http\Controllers\backend\Account\other_coast\OtherCostController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeAttendanceController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeLeaveController;
 use App\Http\Controllers\backend\EmployeeManage\EmployeeMonthlySalaryController;
@@ -249,6 +251,27 @@ Route::prefix('student')->group(function (){
         Route::get('/student/fee/add', [AccountStudentFeeController::class, 'AccountStudentFeeAdd'])->name('account.add.student.fee');
         Route::get('/student/fee/getStudent', [AccountStudentFeeController::class, 'AccountStudentFeeGetStudent'])->name('account.fee.getStudent');
         Route::post('/student/fee/store', [AccountStudentFeeController::class, 'AccountStudentFeeStore'])->name('account.fee.store');
+
+        // Employee Salary Routes
+        Route::get('/salary/view', [AccountSalaryController::class, 'AccountSalaryView'])->name('account.teacher.fee.view');
+
+        Route::get('/salary/add', [AccountSalaryController::class, 'AccountSalaryAdd'])->name('account.salary.add');
+
+        Route::get('/salary/getemployee', [AccountSalaryController::class, 'AccountSalaryGetEmployee'])->name('account.salary.getemployee');
+
+        Route::post('/salary/store', [AccountSalaryController::class, 'AccountSalaryStore'])->name('account.salary.store');
+
+        // Other Cost Rotues
+
+        Route::get('other/cost/view', [OtherCostController::class, 'OtherCostView'])->name('other.cost.view');
+
+        Route::get('other/cost/add', [OtherCostController::class, 'OtherCostAdd'])->name('other.cost.add');
+
+        Route::post('other/cost/store', [OtherCostController::class, 'OtherCostStore'])->name('store.other.cost');
+
+        Route::get('other/cost/edit/{id}', [OtherCostController::class, 'OtherCostEdit'])->name('edit.other.cost');
+
+        Route::post('other/cost/update/{id}', [OtherCostController::class, 'OtherCostUpdate'])->name('update.other.cost');
     });
 
 
